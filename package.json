@@ -1,0 +1,35 @@
+{
+  "name": "beer",
+  "version": "0.0.1",
+  "description": "Beer resource",
+  "main": "./index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "mocha test",
+    "coverage": "istanbul cover _mocha -- -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrprompt/beer.git"
+  },
+  "keywords": [
+    "beer"
+  ],
+  "author": "Thiago Paes <mrprompt@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mrprompt/beer/issues"
+  },
+  "homepage": "https://github.com/mrprompt/beer#readme",
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.5.0",
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.0.1"
+  },
+  "dependencies": {
+    "commander": "^2.14.1",
+    "underscore": "^1.8.3",
+    "xml2js": "^0.4.19"
+  }
+}
