@@ -5,17 +5,24 @@ const _ = require('underscore');
 
 const xml = fs.readFileSync(__dirname + '/../styleguide/styleguide2008_pt.xml', 'utf8');
 
-module.exports.getBeers = () => {
-    const beers = [];
-    
+function readFile(callback) {
     parseString(xml, function (err, result) {
         const classes = result.styleguide.class.shift();
         const categories = classes.category;
 
-        _.each(categories, (category, index) => {
+        callback(categories);
+    });
+}
+
+module.exports.getBeers = () => {
+    const beers = [];
+    
+    readFile((categories) => {
+        _.each(categories, (category) => {
             let name = (category.name.shift());
             let beer = {
-                name: isObject(name) ? name['$'].translated : name
+                name: isObject(name) ? name['$'].translated : name,
+                id: category['$'].id
             }
             
             if (category.subcategory) {
@@ -25,7 +32,7 @@ module.exports.getBeers = () => {
                     let name = (category.name.shift());
                     name = isObject(name) ? name['$'].translated : name;
 
-                    beer.categories.push({ name });
+                    beer.categories.push({ name, id: category['$'].id });
                 });
             }
 
@@ -34,4 +41,10 @@ module.exports.getBeers = () => {
     });
 
     return beers;
+};
+
+module.exports.openBeer = (beerId) => {
+    const beers = this.getBeers();
+
+    return _.find(beers, {id: beerId });
 };

@@ -7,3 +7,19 @@
 A Beer Cli in Nodejs.
 
 Beers catalog from [Beer Judge Certification Program](https://www.bjcp.org/)
+
+
+## Use
+
+
+### List beers
+
+```console
+beer list
+```
+
+### View a beer
+
+```
+beer view <id>
+```

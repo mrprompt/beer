@@ -9,16 +9,30 @@ program.command('list')
     .description('list available beers')
     .action((command) => {
         const beers = beer.getBeers();
-        
-        _.each(beers, (beer) => {
-            console.info(`- ${beer.name}`);
 
+        _.each(beers, (beer, index) => {
+            console.info(`#${beer.id} - ${beer.name}`);
+            
             if (beer.categories) {
                 _.each(beer.categories, (category) => {
-                    console.log(`\t - ${category.name}`);
+                    console.log(`\t#${category.id} - ${category.name}`);
                 });
             }
         });
+    });
+
+program.command('view')
+    .description('view a beer')
+    .action((id, command) => {
+        const find = beer.openBeer(id);
+        
+        console.info(`#${find.id} - ${find.name}`);
+
+        if (find.categories) {
+            _.each(find.categories, (category) => {
+                console.log(`\t#${category.id} - ${category.name}`);
+            });
+        }
     });
 
 program.parse(process.argv);
