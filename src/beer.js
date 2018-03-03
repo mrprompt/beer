@@ -25,7 +25,7 @@ module.exports.getBeers = () => {
                     let name = (category.name.shift());
                     name = isObject(name) ? name['$'].translated : name;
 
-                    beer.categories.push(name);
+                    beer.categories.push({ name });
                 });
             }
 

@@ -1,7 +1,7 @@
 const program = require('commander');
 const pkg = require(__dirname + '/package.json');
 const beer = require(__dirname + '/src/beer');
-const inspect = require('util').inspect;
+const _ = require('underscore');
 
 program.version(pkg.version);
 
@@ -10,7 +10,15 @@ program.command('list')
     .action((command) => {
         const beers = beer.getBeers();
         
-        console.log(inspect(beers, { colors: true, depth: Infinity }));
+        _.each(beers, (beer) => {
+            console.info(`- ${beer.name}`);
+
+            if (beer.categories) {
+                _.each(beer.categories, (category) => {
+                    console.log(`\t - ${category.name}`);
+                });
+            }
+        });
     });
 
 program.parse(process.argv);
