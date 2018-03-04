@@ -33,7 +33,20 @@ module.exports.getBeers = () => {
                     let name = (category.name.shift());
                     name = isObject(name) ? name['$'].translated : name;
 
-                    beer.categories.push({ name, id: category['$'].id });
+                    const { aroma, appearance, flavor, mouthfeel, impression, comments, ingredients, examples } = category;
+
+                    beer.categories.push({ 
+                        name, 
+                        id: category['$'].id,
+                        aroma, 
+                        appearance, 
+                        flavor, 
+                        mouthfeel, 
+                        impression, 
+                        comments, 
+                        ingredients,
+                        examples
+                    });
                 });
             }
 
