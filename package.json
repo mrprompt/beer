@@ -1,5 +1,5 @@
 {
-  "name": "beer",
+  "name": "beer-cli",
   "version": "0.0.1",
   "description": "Beer resource",
   "main": "./index.js",
