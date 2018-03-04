@@ -24,6 +24,6 @@ beer list
 
 ### View a beer
 
-```
+```console
 beer view <id>
 ```
