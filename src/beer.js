@@ -2,6 +2,7 @@ const fs = require('fs');
 const isObject = require('util').isObject;
 const parseString = require('xml2js').parseString;
 const _ = require('underscore');
+const var_dump = require('var_dump-js');
 
 const xml = fs.readFileSync(__dirname + '/../styleguide/styleguide2008_pt.xml', 'utf8');
 
@@ -44,7 +45,18 @@ module.exports.getBeers = () => {
 };
 
 module.exports.openBeer = (beerId) => {
-    const beers = this.getBeers();
+    if (!beerId) return false;
 
-    return _.find(beers, {id: beerId });
+    const beers = this.getBeers();
+    
+    let result = _.find(beers, { id: beerId.toUpperCase() });
+
+    if (_.isUndefined(result)) {
+        let mainId = beerId.toUpperCase().replace(/[A-Z]/ig, '');
+        let mainBeer = this.openBeer(mainId);
+
+        return _.find(mainBeer.categories, { id: beerId.toUpperCase() });
+    }
+
+    return result;
 };

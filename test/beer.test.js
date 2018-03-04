@@ -33,17 +33,27 @@ describe('Beer', function () {
         });
 
         it('openBeer() called with id must be return object', function (done) {
-            const beers = this.beer.openBeer('21');
+            const beers = this.beer.openBeer('23');
 
             expect(beers).to.be.an.Object;
 
             done();
         });
 
-        it('openBeer() called with null id must be return undefined', function (done) {
+        it('openBeer() called with sub id must be return object', function (done) {
+            const beers = this.beer.openBeer('23A');
+
+            expect(beers).to.be.an.Object;
+            expect(beers.id).not.to.be.an.Undefined;
+
+            done();
+        });
+
+        it('openBeer() called with null id must be return false', function (done) {
             const beers = this.beer.openBeer(null);
 
-            expect(beers).to.be.an.Undefined;
+            expect(beers).not.to.be.ok;
+            expect(beers).to.be.false;
 
             done();
         });

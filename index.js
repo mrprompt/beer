@@ -25,6 +25,10 @@ program.command('view')
     .description('view a beer')
     .action((id, command) => {
         const find = beer.openBeer(id);
+
+        if (!find) {
+            return console.error('Beer not found :(');
+        }
         
         console.info(`#${find.id} - ${find.name}`);
 
