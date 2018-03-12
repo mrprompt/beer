@@ -2,7 +2,6 @@ const fs = require('fs');
 const isObject = require('util').isObject;
 const parseString = require('xml2js').parseString;
 const _ = require('underscore');
-const var_dump = require('var_dump-js');
 
 const xml = fs.readFileSync(__dirname + '/../styleguide/styleguide2008_pt.xml', 'utf8');
 
