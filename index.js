@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const program = require('commander');
 const pkg = require(__dirname + '/package.json');
 const beer = require(__dirname + '/src/beer');
