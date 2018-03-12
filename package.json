@@ -1,6 +1,6 @@
 {
   "name": "beer-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Beer resource",
   "main": "./index.js",
   "scripts": {
